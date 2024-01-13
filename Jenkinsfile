@@ -7,5 +7,13 @@ pipeline {
                  checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Aniediogo/buymore.git']])
                }
        }
+
+       stage('Build docker image') {
+            steps {
+                script {
+                    sh 'docker build -t buymore:1 .'
+                }
+            }
+        }
    }
 }   
