@@ -9,14 +9,6 @@ pipeline {
       IMAGE_NAME = '${DOCKER_USER}' + '/' + '${APP_NAME}'
       IMAGE_TAG = '${RELEASE}-${BUILD_NUMBER}'
    }
-
-   stages {
-       stage('clean up workspace'){
-            steps{
-              cleanWS()
-            }
-       }
-       
        
        stage('checkout from git repo') {
                steps {
@@ -27,6 +19,7 @@ pipeline {
 
         stage('Check repo for secrets') {
                steps {
+                 sh 'rm -rf trufflehog-result.json || true'
                  sh 'docker run gesellix/trufflehog --json https://github.com/Aniediogo/buymore.git > trufflehog-result.json'
                  sh 'cat trufflehog-result.json'
                }
