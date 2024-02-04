@@ -52,7 +52,7 @@ pipeline {
        
     stages{   
 
-         stage('Cleanup Workspace') {
+        stage('Cleanup Workspace') {
             steps {
                 script {
                     deleteDir()
@@ -66,6 +66,14 @@ pipeline {
                  checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Aniediogo/buymore.git']])
                }
        }
+
+
+       stage('Check repo for secrets') {
+                steps {
+                  sh 'docker run gesellix/trufflehog --json https://github.com/Aniediogo/buymore.git > trufflehog-result.json'
+                  sh 'cat trufflehog-result.json'
+                }
+          } 
 
        stage('build docker image') {
               steps{
