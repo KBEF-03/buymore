@@ -83,6 +83,19 @@ pipeline {
             }
        }
 
+       
+        stage('Push image to Hub'){
+            steps{
+                script{
+                   withCredentials([string(credentialsId: 'docker-id', variable: 'cred')]) {
+                   sh 'docker login -u aniediogo -p ${cred}'
+
+}
+                   sh 'docker push aniediogo/buymore:1.1'
+                }
+            }
+        }
+
 
     }
 }
