@@ -29,28 +29,28 @@ pipeline {
 
 
        
-       stage('build docker image') {
-              steps{
-                  script{
-                     sh 'docker build -t aniediogo/buymore:1.1 .'
-                }
-            }
-       }
+//        stage('build docker image') {
+//               steps{
+//                   script{
+//                      sh 'docker build -t aniediogo/buymore:1.1 .'
+//                 }
+//             }
+//        }
    
       
-       stage('push docker to docker hub'){
-         steps{
-            script{
-                      withCredentials([string(credentialsId: 'dockerbub', variable: 'cred')]) {
-                      sh 'docker login -u aniediogo -p ${cred}'
+//        stage('push docker to docker hub'){
+//          steps{
+//             script{
+//                       withCredentials([string(credentialsId: 'dockerbub', variable: 'cred')]) {
+//                       sh 'docker login -u aniediogo -p ${cred}'
 
-}
-                      sh 'docker push aniediogo/buymore:1.1'
-            }
-         }
+// }
+//                       sh 'docker push aniediogo/buymore:1.1'
+//             }
+//          }
   
-       }
+//        }
 
        
-    }
-}    
+//     }
+// }    
