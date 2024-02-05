@@ -40,7 +40,7 @@ pipeline {
        
        stage('trivy scan') {
               steps{
-                     sh 'trivy image aniediogo/buymore:1.1'
+                     sh 'trivy image aniediogo/buymore:1.1 > result.txt'
                 }
             }
 
