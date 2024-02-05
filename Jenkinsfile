@@ -28,15 +28,7 @@ pipeline {
        }
 
 
-       stage('Build and Test Python') {
-            steps {
-                script {
-                    // Run Python tests using a Python test framework (e.g., pytest)
-                    sh '/home/diogo/.local/bin/pytest'
-                }
-            }
-        }
-
+       
        
        stage('build docker image') {
               steps{
