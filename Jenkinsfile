@@ -29,15 +29,22 @@ pipeline {
 
 
        
-//        stage('build docker image') {
-//               steps{
-//                   script{
-//                      sh 'docker build -t aniediogo/buymore:1.1 .'
-//                 }
-//             }
-//        }
+       stage('build docker image') {
+              steps{
+                  script{
+                     sh 'docker build -t aniediogo/buymore:1.1 .'
+                }
+            }
+       }
    
-      
+       
+       stage('build docker image') {
+              steps{
+                     sh 'trivy image aniediogo/buymore:1.1 .'
+                }
+            }
+
+   
 //        stage('push docker to docker hub'){
 //          steps{
 //             script{
