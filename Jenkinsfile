@@ -38,7 +38,7 @@ pipeline {
        }
    
        
-       stage('build docker image') {
+       stage('trivy scan') {
               steps{
                      sh 'trivy image aniediogo/buymore:1.1 .'
                 }
