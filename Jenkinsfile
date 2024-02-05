@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     // Run Python tests using a Python test framework (e.g., pytest)
-                    sh 'pytest'
+                    sh '/home/diogo/.local/bin/pytest'
                 }
             }
         }
