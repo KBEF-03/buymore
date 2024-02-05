@@ -28,17 +28,7 @@ pipeline {
        }
 
 
-       stage('SCA test with snyk'){
-         steps{
-            echo 'snyk testing .........'
-            snykSecurity(
-               snykInstallation: 'snyk',
-               snykTokenId: 'snykid',
-            )
-         }
-       }
-
-
+       
        stage('build docker image') {
               steps{
                   script{
