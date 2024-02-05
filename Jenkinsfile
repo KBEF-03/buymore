@@ -12,11 +12,7 @@ pipeline {
        }
 
 
-       stage('Check for secret in repo'){
-         steps{
-            sh 'docker run gesellix/trufflehog --json https://github.com/Aniediogo/buymore.git > trufflehog-result.json'
-         }
-       }
+       
 
        stage('checkout from git repo') {
                steps {
@@ -24,6 +20,12 @@ pipeline {
                }
        }
 
+     
+       stage('Check for secret in repo'){
+         steps{
+            sh 'docker run gesellix/trufflehog --json https://github.com/Aniediogo/buymore.git > trufflehog-result.json'
+         }
+       }
 
        stage('build docker image') {
               steps{
