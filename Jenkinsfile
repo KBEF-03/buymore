@@ -33,7 +33,7 @@ pipeline {
             echo 'snyk testing .........'
             snykSecurity(
                snykInstallation: 'snyk',
-               snykTokenId: 'snyk',
+               snykTokenId: 'snykid',
             )
          }
        }
