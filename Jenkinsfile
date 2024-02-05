@@ -13,6 +13,7 @@ pipeline {
        stage('build docker image') {
               steps{
                   script{
+                     sh 'docker rmi buymore:1'
                      sh 'docker build -t buymore:1 .'
                 }
             }
