@@ -45,7 +45,7 @@ pipeline {
                       sh 'docker login -u aniediogo -p ${cred}'
 
 }
-                      sh 'docker push aniediogo/buymore:1.1 '
+                      sh 'docker push aniediogo/buymore:1.1'
             }
          }
   
