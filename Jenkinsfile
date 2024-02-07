@@ -17,6 +17,13 @@ pipeline {
                  checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Aniediogo/buymore.git']])
                }
        }
+
+
+       stage('Secret scanning with trufflehog'){
+          steps{
+             sh 'docker run trufflesecurity/trufflehog --json https://github.com/Aniediogo/buymore.git > truffle-result.json'
+         }
+       }
        
        stage('build docker image') {
               steps{
