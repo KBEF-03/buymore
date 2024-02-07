@@ -28,5 +28,12 @@ pipeline {
             }
        }
    
+       stage('trivy container scan'){
+         steps{
+          sh 'trivy image buymore:1 > trivy-result.txt'
+         }
+       }
+
+
     }
 }    
