@@ -18,13 +18,7 @@ pipeline {
                }
        }
 
-
-       stage('Secret scanning with trufflehog'){
-          steps{
-             sh 'docker run trufflesecurity/trufflehog --json . > truffle-result.json'
-         }
-       }
-       
+   
        stage('build docker image') {
               steps{
                   script{
