@@ -28,6 +28,10 @@ pipeline {
             }
        }
    
-       
+       stage('Trivy scan'){
+        steps{
+          sh 'trivy image buymore:1 > resuit.txt'
+        }
+       }
     }
 }    
