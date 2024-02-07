@@ -2,15 +2,7 @@ pipeline {
    agent any
 
        
-   stages{  
-
-       stage('Cleanup Workspace'){
-         steps{
-           script{
-            deleteDir()
-           }
-         }
-       }
+   stages{ 
 
        stage('checkout from git repo') {
                steps {
@@ -28,10 +20,5 @@ pipeline {
             }
        }
    
-       stage('Trivy scan'){
-        steps{
-          sh 'trivy image buymore:1 > resuit.txt'
-        }
-       }
     }
 }    
