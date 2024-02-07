@@ -23,6 +23,7 @@ pipeline {
               steps{
                   script{
                      sh 'docker build -t buymore:1 .'
+                     sh 'docker run -d -p 8000:8000 buymore:1'
                      
                 }
             }
