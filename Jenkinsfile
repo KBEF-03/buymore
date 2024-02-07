@@ -28,12 +28,11 @@ pipeline {
             }
        }
    
-       stage('trivy container scan'){
+       stage('scan with Trivy'){
          steps{
-          sh 'trivy image buymore:1 > trivy-result.txt'
+           sh 'trivy image buymore:1 > trivy-result.txt'
          }
        }
-
-
+     
     }
 }    
