@@ -22,8 +22,7 @@ pipeline {
        stage('build docker image') {
               steps{
                   script{
-                     sh 'docker build -t buymore:1 .'
-                     sh 'docker run -d -p 8000:8000 buymore:1'
+                     sh 'docker build -t aniediogo/buymore:1 .'
                      
                 }
             }
@@ -35,5 +34,18 @@ pipeline {
          }
        }
      
+       stage('push image to docker hub'){
+          steps{
+             script{
+                withCredentials([string(credentialsId: 'id', variable: 'cred')]) {
+                sh 'docker login -u aniediogo -p ${cred}'
+}
+                sh 'docker push aniediogo/buymore:1'
+             }
+
+         }
+       }
+
+
     }
 }    
