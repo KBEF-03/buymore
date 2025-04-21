@@ -4,22 +4,22 @@ pipeline {
     stages {
         stage('Checkout from Git Repo') {
             steps {
-                checkout([
+                checkout scm: [
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
                     extensions: [],
                     userRemoteConfigs: [[url: 'https://github.com/KBEF-03/buymore.git']]
-                ])
+                ]
             }
         }
 
         stage('Build Docker Image') {
-    steps {
-        script {
-            sh 'docker build -t buymore:1 .'
-            echo 'Docker image built successfully!'
+            steps {
+                script {
+                    sh 'docker build -t buymore:1 .'
+                    echo 'Docker image built successfully!'
+                }
+            }
         }
     }
 }
-
-        
