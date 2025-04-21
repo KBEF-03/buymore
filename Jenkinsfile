@@ -12,6 +12,14 @@ pipeline {
                 ])
             }
         }
+
+        stage('Build Docker Image') {
+    steps {
+        script {
+            sh 'docker build -t buymore:1 .'
+            echo 'Docker image built successfully!'
+        }
     }
 }
+
         
